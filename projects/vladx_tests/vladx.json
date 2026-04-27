@@ -1,0 +1,12 @@
+{
+  "nome": "vladx_tests",
+  "versione": "0.1.1",
+  "descrizione": null,
+  "autore": null,
+  "licenza": "MIT",
+  "principale": "main.vlx",
+  "dipendenze": {
+    "vladx_tests": "latest"
+  },
+  "script": {}
+}

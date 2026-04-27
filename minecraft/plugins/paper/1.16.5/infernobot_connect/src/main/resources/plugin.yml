@@ -1,0 +1,17 @@
+name: InfernoBotConnect
+version: 1.0.0
+main: it.infernobot.connect.InfernoBotConnect
+api-version: 1.16
+description: Bridge between Minecraft server and Discord bot via WebSocket
+authors: [InfernoBot]
+
+commands:
+  ibc:
+    description: InfernoBotConnect management command
+    usage: /ibc <reload|status>
+    permission: infernobot.admin
+
+permissions:
+  infernobot.admin:
+    description: Access to InfernoBotConnect commands
+    default: op

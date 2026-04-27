@@ -1,0 +1,7 @@
+it/infernobot/connect/handler/FileHandler.class
+it/infernobot/connect/packet/PacketHandler.class
+it/infernobot/connect/websocket/BotWebSocketServer.class
+it/infernobot/connect/handler/ConsoleHandler$LogAppender.class
+it/infernobot/connect/handler/StatsHandler.class
+it/infernobot/connect/handler/ConsoleHandler.class
+it/infernobot/connect/InfernoBotConnect.class

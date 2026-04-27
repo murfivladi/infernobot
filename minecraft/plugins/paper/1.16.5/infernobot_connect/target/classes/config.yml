@@ -1,0 +1,12 @@
+# InfernoBotConnect configuration
+websocket:
+  port: 8887
+  # Secret token — must match the one set in your Discord bot
+  token: "change-me-secret-token"
+
+# Allowed file paths for the FileHandler (relative to server root)
+files:
+  allowed-paths:
+    - "plugins/"
+    - "logs/"
+    - "world/"

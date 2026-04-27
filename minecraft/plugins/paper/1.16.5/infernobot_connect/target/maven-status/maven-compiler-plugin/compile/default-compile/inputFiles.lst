@@ -1,0 +1,6 @@
+/workspaces/infernobot/minecraft/plugins/paper/1.16.5/infernobot_connect/src/main/java/it/infernobot/connect/InfernoBotConnect.java
+/workspaces/infernobot/minecraft/plugins/paper/1.16.5/infernobot_connect/src/main/java/it/infernobot/connect/handler/ConsoleHandler.java
+/workspaces/infernobot/minecraft/plugins/paper/1.16.5/infernobot_connect/src/main/java/it/infernobot/connect/handler/FileHandler.java
+/workspaces/infernobot/minecraft/plugins/paper/1.16.5/infernobot_connect/src/main/java/it/infernobot/connect/handler/StatsHandler.java
+/workspaces/infernobot/minecraft/plugins/paper/1.16.5/infernobot_connect/src/main/java/it/infernobot/connect/packet/PacketHandler.java
+/workspaces/infernobot/minecraft/plugins/paper/1.16.5/infernobot_connect/src/main/java/it/infernobot/connect/websocket/BotWebSocketServer.java

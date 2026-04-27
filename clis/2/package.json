@@ -1,0 +1,1 @@
+{"name":"inferno-cli","version":"1.0.0","type":"module","bin":{"inferno":"./dist/index.js"},"scripts":{"build":"tsc","dev":"tsx src/index.ts","start":"node dist/index.js"},"dependencies":{"chalk":"^5.3.0","commander":"^12.1.0","inquirer":"^9.2.20"},"devDependencies":{"@types/inquirer":"^9.0.9","@types/node":"^20.14.0","tsx":"^4.11.0","typescript":"^5.4.5"}}
