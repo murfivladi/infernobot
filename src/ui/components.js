@@ -525,7 +525,6 @@ const Panels = {
         ),
         new ActionRowBuilder().addComponents(
           new ButtonBuilder().setCustomId('admin_community').setLabel(t('ADMIN_COMMUNITY', locale)).setStyle(ButtonStyle.Primary).setEmoji('👥'),
-          new ButtonBuilder().setCustomId('admin_permissions').setLabel(t('ADMIN_PERMISSIONS', locale)).setStyle(ButtonStyle.Primary).setEmoji('🔑'),
           new ButtonBuilder().setCustomId('admin_system').setLabel(t('ADMIN_SYSTEM', locale)).setStyle(ButtonStyle.Danger).setEmoji('🖥️'),
         ),
       ],
@@ -571,7 +570,7 @@ const Panels = {
         .setTitle(t('SETTINGS_BOT_TITLE', locale))
         .setColor(Design.colors.settings)
         .addFields(
-          { name: t('SETTINGS_LANG', locale), value: formatValue(settings.language), inline: true },
+          { name: t('SETTINGS_LANG', locale), value: formatValue(settings.locale), inline: true },
           { name: t('SETTINGS_LOG_CH', locale), value: formatValue(settings.log_channel, 'channel'), inline: true },
           { name: t('SETTINGS_MOD_CH', locale), value: formatValue(settings.mod_channel, 'channel'), inline: true },
           { name: t('SETTINGS_REPORT_CH', locale), value: formatValue(settings.report_channel, 'channel'), inline: true },

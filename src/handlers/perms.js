@@ -1,20 +1,37 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 const PERMISSIONS = [
-  { key: 'kick', labelKey: 'PERM_KICK', category: 'moderation', icon: '👢' },
-  { key: 'ban', labelKey: 'PERM_BAN', category: 'moderation', icon: '🔨' },
-  { key: 'mute', labelKey: 'PERM_MUTE', category: 'moderation', icon: '🔇' },
-  { key: 'unmute', labelKey: 'PERM_UNMUTE', category: 'moderation', icon: '🔊' },
-  { key: 'warn', labelKey: 'PERM_WARN', category: 'moderation', icon: '⚠️' },
-  { key: 'remwarn', labelKey: 'PERM_REMWARN', category: 'moderation', icon: '🧹' },
-  { key: 'reports_view', labelKey: 'PERM_REPORTS_VIEW', category: 'reports', icon: '📋' },
-  { key: 'reports_manage', labelKey: 'PERM_REPORTS_MANAGE', category: 'reports', icon: '✏️' },
-  { key: 'otchety_view', labelKey: 'PERM_OTCHETY_VIEW', category: 'otchety', icon: '📊' },
-  { key: 'otchety_create', labelKey: 'PERM_OTCHETY_CREATE', category: 'otchety', icon: '📝' },
-  { key: 'staff_view', labelKey: 'PERM_STAFF_VIEW', category: 'staff', icon: '👥' },
-  { key: 'staff_manage', labelKey: 'PERM_STAFF_MANAGE', category: 'staff', icon: '🎭' },
-  { key: 'settings_view', labelKey: 'PERM_SETTINGS_VIEW', category: 'settings', icon: '⚙️' },
-  { key: 'settings_edit', labelKey: 'PERM_SETTINGS_EDIT', category: 'settings', icon: '🔧' },
+  // Moderation
+  { key: 'kick',             labelKey: 'PERM_KICK',             category: 'moderation', icon: '👢' },
+  { key: 'ban',              labelKey: 'PERM_BAN',              category: 'moderation', icon: '🔨' },
+  { key: 'unban',            labelKey: 'PERM_UNBAN',            category: 'moderation', icon: '🔓' },
+  { key: 'mute',             labelKey: 'PERM_MUTE',             category: 'moderation', icon: '🔇' },
+  { key: 'unmute',           labelKey: 'PERM_UNMUTE',           category: 'moderation', icon: '🔊' },
+  { key: 'warn',             labelKey: 'PERM_WARN',             category: 'moderation', icon: '⚠️' },
+  { key: 'remwarn',          labelKey: 'PERM_REMWARN',          category: 'moderation', icon: '🧹' },
+  { key: 'mod_history_view', labelKey: 'PERM_MOD_HISTORY_VIEW', category: 'moderation', icon: '📋' },
+  // Reports
+  { key: 'reports_view',     labelKey: 'PERM_REPORTS_VIEW',     category: 'reports',    icon: '📋' },
+  { key: 'reports_reply',    labelKey: 'PERM_REPORTS_REPLY',    category: 'reports',    icon: '💬' },
+  { key: 'reports_rate',     labelKey: 'PERM_REPORTS_RATE',     category: 'reports',    icon: '⭐' },
+  { key: 'reports_manage',   labelKey: 'PERM_REPORTS_MANAGE',   category: 'reports',    icon: '✏️' },
+  { key: 'reports_delete',   labelKey: 'PERM_REPORTS_DELETE',   category: 'reports',    icon: '🗑️' },
+  { key: 'reports_punish',   labelKey: 'PERM_REPORTS_PUNISH',   category: 'reports',    icon: '⚖️' },
+  // Otchety
+  { key: 'otchety_view',     labelKey: 'PERM_OTCHETY_VIEW',     category: 'otchety',    icon: '📊' },
+  { key: 'otchety_create',   labelKey: 'PERM_OTCHETY_CREATE',   category: 'otchety',    icon: '📝' },
+  { key: 'otchety_edit',     labelKey: 'PERM_OTCHETY_EDIT',     category: 'otchety',    icon: '✏️' },
+  { key: 'otchety_delete',   labelKey: 'PERM_OTCHETY_DELETE',   category: 'otchety',    icon: '🗑️' },
+  // Staff
+  { key: 'staff_view',       labelKey: 'PERM_STAFF_VIEW',       category: 'staff',      icon: '👥' },
+  { key: 'staff_manage',     labelKey: 'PERM_STAFF_MANAGE',     category: 'staff',      icon: '🎭' },
+  { key: 'staff_promote',    labelKey: 'PERM_STAFF_PROMOTE',    category: 'staff',      icon: '⬆️' },
+  { key: 'staff_remove',     labelKey: 'PERM_STAFF_REMOVE',     category: 'staff',      icon: '❌' },
+  { key: 'staff_setrole',    labelKey: 'PERM_STAFF_SETROLE',    category: 'staff',      icon: '🏷️' },
+  { key: 'staff_perms',      labelKey: 'PERM_STAFF_PERMS',      category: 'staff',      icon: '🔑' },
+  // Settings
+  { key: 'settings_view',    labelKey: 'PERM_SETTINGS_VIEW',    category: 'settings',   icon: '⚙️' },
+  { key: 'settings_edit',    labelKey: 'PERM_SETTINGS_EDIT',    category: 'settings',   icon: '🔧' },
 ];
 
 const PERM_CATEGORY_KEYS = {
@@ -28,7 +45,8 @@ const PERM_CATEGORY_KEYS = {
 const ROLES_PER_PAGE = 10;
 const PERMS_PER_PAGE = 6;
 
-module.exports = function createPermsHandlers({ db, t, Design, Row }) {
+module.exports = function createPermsHandlers({ db, t: tInject, Design, Row }) {
+  const t = tInject || require('../utils/locale').t;
   async function handlePermissionsPanel(interaction, locale) {
     const guild = interaction.guild;
     if (!guild) { await interaction.reply({ content: t('SERVER_ONLY', locale), flags: 64 }); return; }
